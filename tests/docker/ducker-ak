@@ -191,7 +191,7 @@ must_do() {
     done
     local cmd="${@}"
     [[ "${verbose}" -eq 1 ]] && echo "${cmd}"
-    ${cmd} >${output} || die "${1} failed"
+    sudo ${cmd} >${output} || die "${1} failed"
 }
 
 # Ask the user a yes/no question.
