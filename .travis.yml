@@ -23,9 +23,7 @@ jdk:
 
 env:
   - _DUCKTAPE_OPTIONS="--subset 0  --subsets 15"
-  - _DUCKTAPE_OPTIONS="--subset 1  --subsets 15"
-  - _DUCKTAPE_OPTIONS="--subset 2  --subsets 15"
-  
+   
 script:
   - ./gradlew rat
   - ./gradlew systemTestLibs && /bin/bash ./tests/docker/run_tests.sh
