@@ -225,7 +225,7 @@ ducker_build() {
     must_pushd "${ducker_dir}"
     # Tip: if you are scratching your head for some dependency problems that are referring to an old code version
     # (for example java.lang.NoClassDefFoundError), add --no-cache flag to the build shall give you a clean start.
-    must_do -v -o docker build --memory="${docker_build_memory_limit}" \
+    sudo must_do -v -o docker build --memory="${docker_build_memory_limit}" \
         --build-arg "ducker_creator=${user_name}" \
         --build-arg "jdk_version=${jdk_version}" \
         --build-arg "UID=${UID}" \
@@ -272,10 +272,10 @@ setup_custom_ducktape() {
         die "You must supply a valid ducktape directory to --custom-ducktape"
     docker_run ducker01 "${image_name}"
     local running_container="$(docker ps -f=network=ducknet -q)"
-    must_do -v -o docker cp "${custom_ducktape}" "${running_container}:/opt/ducktape"
+    sudo must_do -v -o docker cp "${custom_ducktape}" "${running_container}:/opt/ducktape"
     docker exec --user=root ducker01 bash -c 'set -x && cd /opt/kafka-dev/tests && sudo python3 ./setup.py develop install && cd /opt/ducktape && sudo python3 ./setup.py develop install'
     [[ $? -ne 0 ]] && die "failed to install the new ducktape."
-    must_do -v -o docker commit ducker01 "${image_name}"
+    sudo must_do -v -o docker commit ducker01 "${image_name}"
     must_do -v docker kill "${running_container}"
     must_do -v docker rm ducker01
 }
@@ -523,7 +523,7 @@ ducker_down() {
         must_do ${verbose_flag} docker kill "${running_containers}"
     fi
     must_do ${verbose_flag} docker rm ${force_str} "${all_containers}"
-    must_do ${verbose_flag} -o rm -f -- "${ducker_dir}/build/node_hosts" "${ducker_dir}/build/cluster.json"
+    sudo must_do ${verbose_flag} -o rm -f -- "${ducker_dir}/build/node_hosts" "${ducker_dir}/build/cluster.json"
     if docker network inspect ducknet &>/dev/null; then
         must_do -v docker network rm ducknet
     fi
