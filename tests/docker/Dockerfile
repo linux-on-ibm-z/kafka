@@ -13,7 +13,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-ARG jdk_version=adoptopenjdk:8
+ARG jdk_version=adoptopenjdk/openjdk11:jre-11.0.8_10
 FROM $jdk_version
 
 MAINTAINER Apache Kafka dev@kafka.apache.org
