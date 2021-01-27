@@ -13,7 +13,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-ARG jdk_version=adoptopenjdk/openjdk11:jre-11.0.8_10
+ARG jdk_version=adoptopenjdk8
 FROM $jdk_version
 
 MAINTAINER Apache Kafka dev@kafka.apache.org
@@ -21,7 +21,8 @@ VOLUME ["/opt/kafka-dev"]
 
 # Set the timezone.
 ENV TZ="/usr/share/zoneinfo/America/Los_Angeles"
-
+ENV JAVA_HOME=/opt/java/openjdk
+ENV PATH=$JAVA_HOME/bin:$PATH
 # Do not ask for confirmations when running apt-get, etc.
 ENV DEBIAN_FRONTEND noninteractive
 
