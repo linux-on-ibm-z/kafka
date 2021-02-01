@@ -19,7 +19,7 @@ services:
   - docker
 
 jdk:
-  - adoptopenjdk11
+  - openjdk11
 
 env:
   - _DUCKTAPE_OPTIONS="--subset 0  --subsets 15"
