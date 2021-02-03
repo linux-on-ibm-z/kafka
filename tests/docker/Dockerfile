@@ -21,7 +21,7 @@ VOLUME ["/opt/kafka-dev"]
 
 # Set the timezone.
 ENV TZ="/usr/share/zoneinfo/America/Los_Angeles"
-ENV JAVA_HOME=/opt/java/jdk-11.0.7+10
+ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk-s390x
 ENV PATH=$JAVA_HOME/bin:$PATH
 # Do not ask for confirmations when running apt-get, etc.
 ENV DEBIAN_FRONTEND noninteractive
