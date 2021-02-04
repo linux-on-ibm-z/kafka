@@ -19,7 +19,8 @@ SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 KAFKA_NUM_CONTAINERS=${KAFKA_NUM_CONTAINERS:-14}
 TC_PATHS=${TC_PATHS:-./kafkatest/}
 REBUILD=${REBUILD:f}
-
+JAVA_HOME=/usr/lib/jvm/java-11-openjdk-s390x
+PATH=$JAVA_HOME/bin:$PATH
 die() {
     echo $@
     exit 1
