@@ -25,7 +25,8 @@ ENV TZ="/usr/share/zoneinfo/America/Los_Angeles"
 #ENV PATH=$JAVA_HOME/bin:$PATH
 # Do not ask for confirmations when running apt-get, etc.
 ENV DEBIAN_FRONTEND noninteractive
-
+ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk-s390x
+ENV PATH=$JAVA_HOME/bin:$PATH
 # Set the ducker.creator label so that we know that this is a ducker image.  This will make it
 # visible to 'ducker purge'.  The ducker.creator label also lets us know what UNIX user built this
 # image.
