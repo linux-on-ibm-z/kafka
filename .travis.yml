@@ -27,7 +27,7 @@ env:
    
 script:
   - ./gradlew rat
-  - ./gradlew systemTestLibs && /bin/bash ./tests/docker/run_tests.sh
+  - ./gradlew systemTestLibs && java -version && /bin/bash ./tests/docker/run_tests.sh
 
 before_cache:
   - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
